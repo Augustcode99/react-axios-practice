@@ -1,11 +1,11 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
-const TutorialList = () => {
-  const tutorials = [
-    { id: 1, title: "harry potter", description: "fantasy" },
-    { id: 2, title: "Jurrasic Park", description: "science fiction" },
-  ];
+const TutorialList = ({ tutorials }) => {
+  // const tutorials = [
+  //   { id: 1, title: "harry potter", description: "fantasy" },
+  //   { id: 2, title: "Jurrasic Park", description: "science fiction" },
+  // ];
 
   return (
     <div className="container mt-4">
@@ -36,7 +36,7 @@ const TutorialList = () => {
                   <AiFillDelete
                     size={20}
                     type="button"
-                    className="me-2 text-warning"
+                    className="text-warning"
                   />
                 </td>
               </tr>
