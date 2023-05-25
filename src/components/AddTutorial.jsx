@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const AddTutorial = () => {
+const AddTutorial = ({ getList }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -25,6 +25,7 @@ const AddTutorial = () => {
     postMovie();
     setTitle("");
     setDescription("");
+    getList();
   };
 
   console.log(title, description);
