@@ -1,7 +1,7 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
-const TutorialList = ({ tutorials }) => {
+const TutorialList = ({ tutorials, delMovie }) => {
   // const tutorials = [
   //   { id: 1, title: "harry potter", description: "fantasy" },
   //   { id: 2, title: "Jurrasic Park", description: "science fiction" },
@@ -34,6 +34,11 @@ const TutorialList = ({ tutorials }) => {
                     className="me-2 text-warning"
                   />
                   <AiFillDelete
+                    onClick={() => {
+                      delMovie(item.id);
+                      // setTimeout(getList, 50);
+                      // getList();
+                    }}
                     size={20}
                     type="button"
                     className="text-warning"

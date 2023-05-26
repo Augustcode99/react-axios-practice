@@ -1,7 +1,7 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 import AddTutorial from "../components/AddTutorial";
 import TutorialList from "../components/TutorialList";
-import { useEffect, useState } from "react";
 
 const Home = () => {
   const BASE_URL = "http://tutorial-api.fullstack.clarusway.com/tutorials/";
@@ -14,6 +14,16 @@ const Home = () => {
     setTutorials(data);
   };
 
+  const deleteMovie = async (id) => {
+    console.log("deleting a movie");
+    try {
+      await axios.delete(BASE_URL + id + "/");
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+  };
+
   useEffect(() => {
     getTutorials();
   }, []);
@@ -23,7 +33,7 @@ const Home = () => {
   return (
     <>
       <AddTutorial getList={getTutorials} />
-      <TutorialList tutorials={tutorials} />
+      <TutorialList tutorials={tutorials} delMovie={deleteMovie} />
     </>
   );
 };
