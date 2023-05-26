@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AddTutorial from "../components/AddTutorial";
 import TutorialList from "../components/TutorialList";
+import Modal from "../components/Modal";
 
 const Home = () => {
   const BASE_URL = "http://tutorial-api.fullstack.clarusway.com/tutorials/";
@@ -34,6 +35,7 @@ const Home = () => {
     <>
       <AddTutorial getList={getTutorials} />
       <TutorialList tutorials={tutorials} delMovie={deleteMovie} />
+      <Modal />
     </>
   );
 };

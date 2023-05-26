@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
 const TutorialList = ({ tutorials, delMovie }) => {
-  // const tutorials = [
+  // const mockData = [
   //   { id: 1, title: "harry potter", description: "fantasy" },
   //   { id: 2, title: "Jurrasic Park", description: "science fiction" },
   // ];
