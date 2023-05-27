@@ -2,11 +2,6 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
 const TutorialList = ({ tutorials, delMovie }) => {
-  // const mockData = [
-  //   { id: 1, title: "harry potter", description: "fantasy" },
-  //   { id: 2, title: "Jurrasic Park", description: "science fiction" },
-  // ];
-
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -36,8 +31,6 @@ const TutorialList = ({ tutorials, delMovie }) => {
                   <AiFillDelete
                     onClick={() => {
                       delMovie(item.id);
-                      // setTimeout(getList, 50);
-                      // getList();
                     }}
                     size={20}
                     type="button"
