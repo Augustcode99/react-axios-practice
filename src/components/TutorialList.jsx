@@ -1,5 +1,6 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import Modal from "./Modal";
 
 const TutorialList = ({ tutorials, delMovie }) => {
   return (
@@ -27,6 +28,8 @@ const TutorialList = ({ tutorials, delMovie }) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editMovie"
                   />
                   <AiFillDelete
                     onClick={() => {
@@ -42,6 +45,7 @@ const TutorialList = ({ tutorials, delMovie }) => {
           })}
         </tbody>
       </table>
+      <Modal />
     </div>
   );
 };
