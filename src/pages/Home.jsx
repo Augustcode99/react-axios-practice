@@ -8,6 +8,7 @@ const Home = () => {
   const BASE_URL = "http://tutorial-api.fullstack.clarusway.com/tutorials/";
 
   const [tutorials, setTutorials] = useState([]);
+  const [editingTutorial, setEditingTutorial] = useState(null);
 
   const getTutorials = async () => {
     console.log("Fetching tutorials...");
@@ -25,6 +26,14 @@ const Home = () => {
     getTutorials();
   };
 
+  const sendEditReq = async (id) => {
+    try {
+      await axios.put(BASE_URL + id + "/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getTutorials();
   }, []);
@@ -34,8 +43,16 @@ const Home = () => {
   return (
     <>
       <AddTutorial getList={getTutorials} />
-      <TutorialList tutorials={tutorials} delMovie={deleteMovie} />
-      <Modal />
+      <TutorialList
+        tutorials={tutorials}
+        delMovie={deleteMovie}
+        setEditingTutorial={setEditingTutorial}
+      />
+      <Modal
+        sendEditReq={sendEditReq}
+        editingTutorial={editingTutorial}
+        setEditingTutorial={setEditingTutorial}
+      />
     </>
   );
 };

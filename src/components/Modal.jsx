@@ -1,10 +1,10 @@
-function Modal() {
+function Modal({ sendEditReq, editingTutorial, setEditingTutorial }) {
   return (
     <div className="modal" tabIndex="-1" id="editMovie" role="dialog">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Modal title</h5>
+            <h5 className="modal-title">Edit Movie</h5>
             <button
               type="button"
               className="close"
@@ -15,19 +15,56 @@ function Modal() {
             </button>
           </div>
           <div className="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-primary">
-              Save changes
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
+            <form action="">
+              <div className="form-group">
+                <label htmlFor="edTital">New Title</label>
+                <input
+                  type="text"
+                  placeholder="edit title"
+                  id="edTital"
+                  className="form-control mb-3"
+                  onChange={(e) => {
+                    setEditingTutorial(
+                      editingTutorial
+                        ? {
+                            ...editingTutorial,
+                            title: e.target.value,
+                          }
+                        : { title: e.target.value }
+                    );
+                  }}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="edDesc">New Description</label>
+                <input
+                  type="text"
+                  placeholder="edit description"
+                  id="edDesc"
+                  className="form-control"
+                  value={editingTutorial ? editingTutorial.description : ""}
+                  onChange={(e) => {
+                    setEditingTutorial(
+                      editingTutorial
+                        ? {
+                            ...editingTutorial,
+                            description: e.target.value,
+                          }
+                        : { description: e.target.value }
+                    );
+                  }}
+                />
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={sendEditReq}
+                >
+                  Save changes
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

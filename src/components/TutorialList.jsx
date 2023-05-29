@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import Modal from "./Modal";
 
-const TutorialList = ({ tutorials, delMovie }) => {
+const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -30,6 +30,9 @@ const TutorialList = ({ tutorials, delMovie }) => {
                     className="me-2 text-warning"
                     data-bs-toggle="modal"
                     data-bs-target="#editMovie"
+                    onClick={() => {
+                      setEditingTutorial(item);
+                    }}
                   />
                   <AiFillDelete
                     onClick={() => {
