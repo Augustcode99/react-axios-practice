@@ -1,5 +1,6 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import EditMovie from "./EditMovie";
 
 const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
   return (
@@ -23,10 +24,7 @@ const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
                 <td> {item.title} </td>
                 <td> {item.description} </td>
                 <td className="text-center text-nowrap">
-                  <FaEdit
-                    size={20}
-                    type="button"
-                    className="me-2 text-warning"
+                  <EditMovie
                     onClick={() => {
                       setEditingTutorial(item);
                     }}

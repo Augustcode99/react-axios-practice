@@ -25,20 +25,11 @@ const Home = () => {
     getTutorials();
   };
 
-  const sendEditReq = async (id) => {
-    try {
-      console.log("editingTutorial:", editingTutorial);
-      await axios.put(BASE_URL + id + "/", editingTutorial);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     getTutorials();
   }, []);
 
-  // console.log(tutorials);
+  console.log("editingTutorial is:", editingTutorial);
 
   return (
     <>
