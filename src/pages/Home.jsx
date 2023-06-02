@@ -24,6 +24,15 @@ const Home = () => {
     }
     getTutorials();
   };
+  const edittMovie = async (id, editedObject) => {
+    console.log("editing a movie");
+    try {
+      await axios.put(BASE_URL + id + "/", editedObject);
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+  };
 
   useEffect(() => {
     getTutorials();
@@ -37,7 +46,9 @@ const Home = () => {
       <TutorialList
         tutorials={tutorials}
         delMovie={deleteMovie}
+        editingTutorial={editingTutorial}
         setEditingTutorial={setEditingTutorial}
+        edittMovie={edittMovie}
       />
     </>
   );

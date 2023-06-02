@@ -3,11 +3,39 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FaEdit } from "react-icons/fa";
 
-function EditMovie() {
+function EditMovie({
+  editingTutorial,
+  itemId,
+  itemTitle,
+  itemDescription,
+  edittMovie,
+}) {
   const [show, setShow] = useState(false);
+  const [title, setTitle] = useState(itemTitle);
+  const [description, setDescription] = useState(itemDescription);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setTitle("");
+    setDescription("");
+  };
   const handleShow = () => setShow(true);
+
+  const handleSubmit = () => {
+    const editedObject = {
+      title: title,
+      description: description,
+    };
+    // Perform the necessary actions when submitting the changes
+    edittMovie(itemId, editedObject);
+    console.log("Title:", title);
+    console.log("Description:", description);
+
+    // Reset the inputs and close the modal
+    setTitle("");
+    setDescription("");
+    handleClose();
+  };
 
   return (
     <>
@@ -25,17 +53,37 @@ function EditMovie() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Edit Movie</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Don not even try to press
-          escape key.
-        </Modal.Body>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              className="form-control"
+              value={title || editingTutorial?.title || ""}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description">Description</label>
+            <input
+              type="text"
+              id="description"
+              className="form-control"
+              value={description || editingTutorial?.description || ""}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+        </form>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Save Changes
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

@@ -1,8 +1,13 @@
-import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import EditMovie from "./EditMovie";
 
-const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
+const TutorialList = ({
+  tutorials,
+  delMovie,
+  editingTutorial,
+  setEditingTutorial,
+  edittMovie,
+}) => {
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -28,6 +33,11 @@ const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
                     onClick={() => {
                       setEditingTutorial(item);
                     }}
+                    editingTutorial={editingTutorial}
+                    itemId={item.id}
+                    itemTitle={item.title}
+                    itemDescription={item.description}
+                    edittMovie={edittMovie}
                   />
                   <AiFillDelete
                     onClick={() => {
