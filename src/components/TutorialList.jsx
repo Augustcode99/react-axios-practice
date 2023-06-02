@@ -1,6 +1,5 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
-import Modal from "./Modal";
 
 const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
   return (
@@ -19,7 +18,7 @@ const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
         <tbody>
           {tutorials.map((item) => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td> {item.id} </td>
                 <td> {item.title} </td>
                 <td> {item.description} </td>
@@ -28,8 +27,6 @@ const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning"
-                    data-bs-toggle="modal"
-                    data-bs-target="#editMovie"
                     onClick={() => {
                       setEditingTutorial(item);
                     }}
@@ -48,7 +45,6 @@ const TutorialList = ({ tutorials, delMovie, setEditingTutorial }) => {
           })}
         </tbody>
       </table>
-      <Modal />
     </div>
   );
 };

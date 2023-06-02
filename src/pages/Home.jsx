@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AddTutorial from "../components/AddTutorial";
 import TutorialList from "../components/TutorialList";
-import Modal from "../components/Modal";
 
 const Home = () => {
   const BASE_URL = "http://tutorial-api.fullstack.clarusway.com/tutorials/";
@@ -28,7 +27,8 @@ const Home = () => {
 
   const sendEditReq = async (id) => {
     try {
-      await axios.put(BASE_URL + id + "/");
+      console.log("editingTutorial:", editingTutorial);
+      await axios.put(BASE_URL + id + "/", editingTutorial);
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,7 @@ const Home = () => {
     getTutorials();
   }, []);
 
-  console.log(tutorials);
+  // console.log(tutorials);
 
   return (
     <>
@@ -46,11 +46,6 @@ const Home = () => {
       <TutorialList
         tutorials={tutorials}
         delMovie={deleteMovie}
-        setEditingTutorial={setEditingTutorial}
-      />
-      <Modal
-        sendEditReq={sendEditReq}
-        editingTutorial={editingTutorial}
         setEditingTutorial={setEditingTutorial}
       />
     </>
